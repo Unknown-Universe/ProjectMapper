@@ -1,20 +1,7 @@
 {
   "name": "@unknownuniverse/shapemanager",
   "version": "1.0.1",
-  "main": "index.js",
-  "files": [
-    "dist/**/*"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
+  "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^17.0.18",
