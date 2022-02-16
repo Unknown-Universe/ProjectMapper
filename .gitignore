@@ -1,2 +1,5 @@
 /dist/*
 .DS_store
+/node_modules
+tslint.json
+.prettierrc
