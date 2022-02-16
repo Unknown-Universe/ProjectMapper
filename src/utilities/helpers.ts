@@ -33,11 +33,11 @@ import {
 } from "./converters";
 
 export function unitOf(mesurement: Mesurement): string {
-    return mesurement.replace(/\d+/, "");
+    return mesurement.replace(/[0-9.\-+eE]+/, "");
 }
 
 export function valueOf(mesurement: Mesurement): number {
-    return +mesurement.replace(/\D+/, "");
+    return +mesurement.slice(0, -unitOf(mesurement).length);
 }
 
 export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
@@ -61,6 +61,8 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
                     return mToFt(`${alignAmount}m`);
                 case "yd":
                     return mToYd(`${alignAmount}m`);
+                case "m":
+                    return align;
             }
         case "cm":
             switch (unitOfTo) {
@@ -74,6 +76,8 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
                     return cmToFt(`${alignAmount}cm`);
                 case "yd":
                     return cmToYd(`${alignAmount}cm`);
+                case "cm":
+                    return align;
             }
         case "mm":
             switch (unitOfTo) {
@@ -87,6 +91,8 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
                     return mmToFt(`${alignAmount}mm`);
                 case "yd":
                     return mmToYd(`${alignAmount}mm`);
+                case "mm":
+                    return align;
             }
         case "in":
             switch (unitOfTo) {
@@ -100,6 +106,8 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
                     return inToFt(`${alignAmount}in`);
                 case "yd":
                     return inToYd(`${alignAmount}in`);
+                case "in":
+                    return align;
             }
         case "ft":
             switch (unitOfTo) {
@@ -113,6 +121,8 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
                     return ftToM(`${alignAmount}ft`);
                 case "yd":
                     return ftToYd(`${alignAmount}ft`);
+                case "ft":
+                    return align;
             }
         case "yd":
             switch (unitOfTo) {
@@ -126,6 +136,8 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
                     return ydToFt(`${alignAmount}yd`);
                 case "m":
                     return ydToM(`${alignAmount}yd`);
+                case "yd":
+                    return align;
             }
         default:
             return "-1in";
@@ -134,4 +146,9 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
 
 export function degreesToRadians(degrees: number): number {
     return degrees * (Math.PI / 180);
+}
+
+export function round(value: number, precision: number = 0): number {
+    const multiplier = Math.pow(10, precision);
+    return Math.round(value * multiplier) / multiplier;
 }

@@ -1,10 +1,26 @@
 import { Point } from "./types/mesurements";
-import { createRectangleFromCorners } from "./utilities/createShape";
+import { Rectangle } from "./types/shapes/Rectangle";
+import { Triangle } from "./types/shapes/Triangle";
 
-const rectangle = createRectangleFromCorners(
-    new Point(0, 10),
-    new Point(-10, 0),
-    "cm"
+const square = Rectangle.createSquare("10ft", new Point(10, 10));
+
+console.log("square:", square);
+
+console.log(
+    "square.rotateDegrees(45).transform(10, 5):",
+    square.rotateDegrees(45).transform(10, 5)
 );
 
-console.log(rectangle.rotateDegrees(45).vertices);
+const triangle = Triangle.createFromPoints(
+    new Point(10, 10),
+    new Point(5, 10),
+    new Point(10, 5),
+    "ft"
+);
+
+console.log("triangle:", triangle);
+
+console.log(
+    "triangle.rotateDegrees(45).transform(10, 5): ",
+    triangle.rotateDegrees(45).transform(10, 5)
+);
