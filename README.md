@@ -1,2 +1,3 @@
-# ProjectMapper
-Maps a array of shapes with set size inside another shape with a set size
+# ShapeManager
+
+A package that allows you to create and manage shapes with verticies, sides, and positions.
