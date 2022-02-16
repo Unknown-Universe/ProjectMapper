@@ -1,16 +1,16 @@
 // Imperial
-type In = `${number}in`;
-type Ft = `${number}ft`;
-type Yd = `${number}yd`;
+export type In = `${number}in`;
+export type Ft = `${number}ft`;
+export type Yd = `${number}yd`;
 
 // Metric
-type Mm = `${number}mm`;
-type Cm = `${number}cm`;
-type M = `${number}m`;
+export type Mm = `${number}mm`;
+export type Cm = `${number}cm`;
+export type M = `${number}m`;
 
-type Mesurement = In | Ft | Yd | Mm | Cm | M;
+export type Mesurement = In | Ft | Yd | Mm | Cm | M;
 
-class Point {
+export class Point {
     x: number;
     y: number;
 

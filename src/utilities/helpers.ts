@@ -1,3 +1,4 @@
+import { Mesurement } from "../types/mesurements";
 import {
     cmToFt,
     cmToIn,
@@ -33,6 +34,10 @@ import {
 
 export function unitOf(mesurement: Mesurement): string {
     return mesurement.replace(/\d+/, "");
+}
+
+export function valueOf(mesurement: Mesurement): number {
+    return +mesurement.replace(/\D+/, "");
 }
 
 export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
@@ -127,9 +132,6 @@ export function alignUnits(align: Mesurement, to: Mesurement): Mesurement {
     }
 }
 
-export const baseRectPoints = [
-    [new Point(1, 1), 0],
-    [new Point(1, -1), 1],
-    [new Point(-1, 1), 2],
-    [new Point(-1, -1), 3],
-];
+export function degreesToRadians(degrees: number): number {
+    return degrees * (Math.PI / 180);
+}

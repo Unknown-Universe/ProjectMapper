@@ -1,3 +1,5 @@
+import { Cm, Ft, In, M, Mm, Yd } from "../types/mesurements";
+
 // Imperial -> Imperial
 export function inToFt(inches: In): Ft {
     return `${+inches.split("in")[0] / 12}ft`;
