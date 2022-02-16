@@ -1,5 +1,5 @@
 import { alignUnits, degreesToRadians, unitOf } from "../../utilities/helpers";
-import { Mesurement, Point } from "../mesurements";
+import { Mesurement, Point, Unit } from "../mesurements";
 import { Shape } from "../shape";
 
 export class Triangle extends Shape {
@@ -54,7 +54,7 @@ export class Triangle extends Shape {
         a: Point,
         b: Point,
         c: Point,
-        mesurement: "cm" | "mm" | "m" | "in" | "ft" | "yd"
+        mesurement: Unit
     ): Triangle {
         const center = new Point((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
 

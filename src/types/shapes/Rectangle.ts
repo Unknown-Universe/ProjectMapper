@@ -5,7 +5,7 @@ import {
     unitOf,
     valueOf,
 } from "../../utilities/helpers";
-import { Mesurement, Point } from "../mesurements";
+import { Mesurement, Point, Unit } from "../mesurements";
 import { Shape } from "../shape";
 
 export class Rectangle extends Shape {
@@ -78,7 +78,7 @@ export class Rectangle extends Shape {
     public static createFromCorners(
         pointOne: Point,
         pointTwo: Point,
-        mesurement: "cm" | "mm" | "m" | "in" | "ft" | "yd"
+        mesurement: Unit
     ): Rectangle {
         const xOffset = round(pointOne.x - pointTwo.x, 2);
         const yOffset = round(pointOne.y - pointTwo.y, 2);

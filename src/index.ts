@@ -1,26 +1,12 @@
-import { Point } from "./types/mesurements";
-import { Rectangle } from "./types/shapes/Rectangle";
-import { Triangle } from "./types/shapes/Triangle";
+import { createShape } from "./utilities/helpers";
 
-const square = Rectangle.createSquare("10ft", new Point(10, 10));
+const positions: [number, number][] = [];
 
-console.log("square:", square);
+for (let i = 10; i > 0; i--) {
+    positions.push([i, i]);
+}
+const shape = createShape(positions, [0, 0], "mm");
 
-console.log(
-    "square.rotateDegrees(45).transform(10, 5):",
-    square.rotateDegrees(45).transform(10, 5)
-);
+console.log(shape);
 
-const triangle = Triangle.createFromPoints(
-    new Point(10, 10),
-    new Point(5, 10),
-    new Point(10, 5),
-    "ft"
-);
-
-console.log("triangle:", triangle);
-
-console.log(
-    "triangle.rotateDegrees(45).transform(10, 5): ",
-    triangle.rotateDegrees(45).transform(10, 5)
-);
+console.log(shape.transform(5, 3));

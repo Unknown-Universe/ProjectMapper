@@ -1,4 +1,5 @@
-import { Mesurement } from "../types/mesurements";
+import { Mesurement, Point, Unit } from "../types/mesurements";
+import { Custom } from "../types/shapes/Custom";
 import {
     cmToFt,
     cmToIn,
@@ -151,4 +152,22 @@ export function degreesToRadians(degrees: number): number {
 export function round(value: number, precision: number = 0): number {
     const multiplier = Math.pow(10, precision);
     return Math.round(value * multiplier) / multiplier;
+}
+
+export function createShape(
+    vertices: [number, number][],
+    position: [number, number],
+    unit: Unit
+): Custom {
+    const points = vertices.map((point) => new Point(point[0], point[1]));
+    const pointPosition = new Point(position[0], position[1]);
+
+    const sides = points.map(
+        (point, i) =>
+            `${point.distanceTo(
+                points[i + 1 < points.length ? i + 1 : 0]
+            )}${unit}` as Mesurement
+    );
+
+    return new Custom(points, sides, pointPosition, unit);
 }

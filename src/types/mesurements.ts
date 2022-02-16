@@ -10,6 +10,8 @@ export type M = `${number}m`;
 
 export type Mesurement = In | Ft | Yd | Mm | Cm | M;
 
+export type Unit = "cm" | "mm" | "m" | "in" | "ft" | "yd";
+
 export class Point {
     x: number;
     y: number;
@@ -31,5 +33,9 @@ export class Point {
         const newY = (this.y += distance.y);
 
         return new Point(newX, newY);
+    }
+
+    public distanceTo(a: Point): number {
+        return Math.sqrt((this.x - a.x) ** 2 + (this.y - a.y) ** 2);
     }
 }
