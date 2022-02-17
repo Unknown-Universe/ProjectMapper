@@ -27,7 +27,7 @@ export class Custom extends Shape {
   public rotateDegrees(degrees: number): Shape {
     return this.rotateRadians(degreesToRadians(degrees));
   }
-  public transform(x: number, y: number): Shape {
+  public move(x: number, y: number): Shape {
     const vertices = this.vertices.map((point) => {
       const returnVal: Point = point.movePoint(new Point(x, y));
       return returnVal;

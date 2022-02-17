@@ -27,7 +27,7 @@ export class Rectangle extends Shape {
     return this.rotateRadians(degreesToRadians(degrees));
   }
 
-  public transform(x: number, y: number): Shape {
+  public move(x: number, y: number): Shape {
     const position = this.position;
     const width = this.sides[0];
     const height = this.sides[1];
