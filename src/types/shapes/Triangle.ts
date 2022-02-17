@@ -12,28 +12,27 @@ export class Triangle extends Shape {
 
     public rotateRadians(radians: number): Shape {
         const position = this.position;
-        const base = this.sides[0];
-        const height = this.sides[1];
-        const hypotenuse = this.sides[2];
-
         const vertices = this.vertices.map((point) => {
             return point.rotatePoint(radians);
         });
-        return new Triangle(height, base, hypotenuse, position, vertices);
+
+        this.position = position;
+        this.vertices = vertices;
+        return this;
     }
     public rotateDegrees(degrees: number): Shape {
         return this.rotateRadians(degreesToRadians(degrees));
     }
     public move(x: number, y: number): Shape {
         const position = add(this.position, new Point(x, y));
-        const base = this.sides[0];
-        const height = this.sides[1];
-        const hypotenuse = this.sides[2];
-
         const vertices = this.vertices.map((point) => {
             return point.movePoint(new Point(x, y));
         });
-        return new Triangle(height, base, hypotenuse, position, vertices);
+
+        this.vertices = vertices;
+        this.position = position;
+
+        return this;
     }
 
     public static createFromPoints(a: Point, b: Point, c: Point): Triangle {
