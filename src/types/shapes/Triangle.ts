@@ -56,7 +56,9 @@ export class Triangle extends Shape {
         const center = new Point((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
 
         const distance = center.distance(c);
-        console.log(distance);
-        return new Triangle(length, length, length, center, [a, b, c]).move(round(-distance.x), round(-distance.y));
+        return new Triangle(length, length, length, center, [a, b, c]).move(
+            round(-distance.x, 3),
+            round(-distance.y, 3),
+        );
     }
 }
