@@ -47,8 +47,8 @@ export class Triangle extends Shape {
         return new Triangle(x, y, z, center, returnVal);
     }
 
-    public static createEqual(length: number, position: Point): Triangle {
-        const c = position;
+    public static createEqual(length: number, x: number, y: number): Triangle {
+        const c = new Point(x, y);
         const a = new Point(length / 2, (Math.sqrt(3) / 2) * length);
         const b = new Point(c.x + length, c.y);
 
