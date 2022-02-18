@@ -2,9 +2,9 @@ export class Point {
     x: number;
     y: number;
 
-    constructor(constructX: number, constructY: number) {
-        this.x = constructX;
-        this.y = constructY;
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
     }
 
     public rotatePoint(radians: number) {

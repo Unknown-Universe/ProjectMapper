@@ -3,9 +3,9 @@ import { Point } from '../point';
 import { Shape } from '../shape';
 
 export class Triangle extends Shape {
-    constructor(height: number, base: number, hypotenuse: number, position: Point, vertices: Point[]) {
+    constructor(a: number, b: number, c: number, position: Point, vertices: Point[]) {
         super();
-        this.sides = [height, base, hypotenuse];
+        this.sides = [a, b, c];
         this.position = position;
         this.vertices = vertices;
     }
@@ -38,13 +38,13 @@ export class Triangle extends Shape {
     public static createFromPoints(a: Point, b: Point, c: Point): Triangle {
         const center = new Point((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
 
-        const height = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2); //ab
-        const base = Math.sqrt((b.x - c.x) ** 2 + (b.y - c.y) ** 2); //bc
-        const hypotenuse = Math.sqrt((a.x - c.x) ** 2 + (a.y - c.y) ** 2); //ac
+        const x = a.distanceTo(b); //ab
+        const y = b.distanceTo(c); //bc
+        const z = a.distanceTo(c); //ac
 
         const returnVal: Point[] = [a, b, c];
 
-        return new Triangle(height, base, hypotenuse, center, returnVal);
+        return new Triangle(x, y, z, center, returnVal);
     }
 
     public static createEqual(length: number, position: Point): Triangle {
