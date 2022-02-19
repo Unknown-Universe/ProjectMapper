@@ -86,3 +86,11 @@ export class YourShape extends Shape {
     }
 }
 ```
+
+## Easy collision detection!
+
+Its quite simple to check if:
+
+-   Two shapes have a side overlaping: `Shape.overlaps(Shape)`
+-   One shape compleatly contains another shape: `Shape.containsShape(Shape)`
+-   A point is inside a shape: `Shape.containsPoint(Point)`
