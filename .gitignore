@@ -3,4 +3,3 @@
 /node_modules
 tslint.json
 .prettierrc
-src/index.ts

@@ -1,9 +1,10 @@
 import { add, degreesToRadians, round } from '../../utilities/helpers';
+import { Line } from '../line';
 import { Point } from '../point';
 import { Shape } from '../shape';
 
 export class Triangle extends Shape {
-    constructor(a: number, b: number, c: number, position: Point, vertices: Point[]) {
+    constructor(a: Line, b: Line, c: Line, position: Point, vertices: Point[]) {
         super();
         this.sides = [a, b, c];
         this.position = position;
@@ -34,13 +35,25 @@ export class Triangle extends Shape {
 
         return this;
     }
+    public overlaps(a: Shape): boolean {
+        let overlap = false;
+        this.sides.map((x) => {
+            a.sides.map((y) => {
+                if (x.overlaps(y)) overlap = true;
+            });
+        });
+        return overlap;
+    }
+    public containsPoint(a: Point): boolean {
+        return true;
+    }
 
     public static createFromPoints(a: Point, b: Point, c: Point): Triangle {
         const center = new Point((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
 
-        const x = a.distanceTo(b); //ab
-        const y = b.distanceTo(c); //bc
-        const z = a.distanceTo(c); //ac
+        const x = new Line(a, b); //ab
+        const y = new Line(b, c); //bc
+        const z = new Line(a, c); //ac
 
         const returnVal: Point[] = [a, b, c];
 
@@ -55,7 +68,7 @@ export class Triangle extends Shape {
         const center = new Point((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
 
         const distance = center.distance(c);
-        return new Triangle(length, length, length, center, [a, b, c]).move(
+        return new Triangle(new Line(a, b), new Line(b, c), new Line(a, c), center, [a, b, c]).move(
             round(-distance.x, 3),
             round(-distance.y, 3),
         );
