@@ -25,3 +25,7 @@ export function add(a: Point, b: Point): Point {
 export function subtract(a: Point, b: Point): Point {
     return new Point(a.x - b.x, a.y - b.y);
 }
+
+export function areaOfTrangle(a: Point, b: Point, c: Point): number {
+    return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0);
+}

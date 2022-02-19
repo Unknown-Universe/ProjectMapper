@@ -12,6 +12,8 @@ export class Rectangle extends Shape {
         this.sides = this.vertices.map(
             (point, i) => new Line(point, this.vertices[i + 1 < this.vertices.length ? i + 1 : 0]),
         );
+
+        this.area = width * height;
     }
 
     public rotateRadians(radians: number): Shape {

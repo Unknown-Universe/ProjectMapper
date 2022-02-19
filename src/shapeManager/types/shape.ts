@@ -5,6 +5,7 @@ export abstract class Shape {
     public sides!: Line[];
     public vertices!: Point[];
     public position!: Point;
+    public area!: number;
 
     public abstract rotateRadians(radians: number): Shape;
     public abstract rotateDegrees(degrees: number): Shape;

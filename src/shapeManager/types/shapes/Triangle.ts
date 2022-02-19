@@ -1,4 +1,4 @@
-import { add, degreesToRadians, round } from '../../utilities/helpers';
+import { add, areaOfTrangle, degreesToRadians, round } from '../../utilities/helpers';
 import { Line } from '../line';
 import { Point } from '../point';
 import { Shape } from '../shape';
@@ -9,6 +9,8 @@ export class Triangle extends Shape {
         this.sides = [a, b, c];
         this.position = position;
         this.vertices = vertices;
+
+        this.area = areaOfTrangle(this.vertices[0], this.vertices[1], this.vertices[2]);
     }
 
     public rotateRadians(radians: number): Shape {
@@ -45,7 +47,20 @@ export class Triangle extends Shape {
         return overlap;
     }
     public containsPoint(a: Point): boolean {
-        return true;
+        const A1 = this.area;
+        const A2 = areaOfTrangle(a, this.vertices[1], this.vertices[2]);
+        const A3 = areaOfTrangle(a, this.vertices[0], this.vertices[2]);
+        const A4 = areaOfTrangle(a, this.vertices[0], this.vertices[1]);
+
+        return A1 === A2 + A3 + A4;
+    }
+
+    public containsShape(a: Shape): boolean {
+        let overlap = true;
+        a.vertices.map((v) => {
+            if (!this.containsPoint(v)) overlap = false;
+        });
+        return overlap;
     }
 
     public static createFromPoints(a: Point, b: Point, c: Point): Triangle {
