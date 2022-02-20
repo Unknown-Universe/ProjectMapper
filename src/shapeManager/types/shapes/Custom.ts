@@ -54,4 +54,11 @@ export class Custom extends Shape {
         });
         return overlap;
     }
+
+    public containsPoint(a: Point): boolean {
+        return false;
+    }
+    public containsShape(a: Shape): boolean {
+        return false;
+    }
 }

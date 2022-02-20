@@ -79,14 +79,14 @@ export class YourShape extends Shape {
         return this;
     }
     public overlaps(a: Shape): boolean {
-    //returns if two shapes sides are overlaping
+        //returns if two shapes sides are overlaping
     }
-    
+
     public containsPoint(a: Point): boolean {
-    //returns true if a point is inside the shape
+        //returns true if a point is inside the shape
     }
     public containsShape(a: Shape): boolean {
-    //returns true if a shape is completely inside the shape
+        //returns true if a shape is completely inside the shape
     }
 
     //Any other functions you want to add
